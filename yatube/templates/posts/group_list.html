@@ -1,19 +1,18 @@
-<!DOCTYPE html> 
-<html lang="ru">          
-  <head>       
-  </head>
-  <body>       
-    <header>
-      {% include 'includes/header.html' %}     
-    </header>
-    <main>
-      <h1>Лев Толстой – зеркало русской революции.</h1>
-      Группа тайных поклонников графа.
-      {% include 'includes/index.html' %} 
-      Список мороженого быть тут должен
-    </main>
-    <footer>
-      {% include 'includes/footer.html' %} 
-    </footer>
-  </body>
-</html> 
+{% extends 'base.html' %} 
+
+{% block title %}
+Cтраница сообщества
+{% endblock %}
+
+{% block page_title %}
+<p>Лев Толстой – зеркало русской революции.</p>
+{% endblock %}
+
+{% block paragraph_1 %}
+{% endblock %}
+
+{% block paragraph_2 %}
+{% endblock %}
+
+{% block paragraph_3 %}
+{% endblock %}
