@@ -1,3 +1,4 @@
+from sre_parse import expand_template
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render
@@ -5,10 +6,16 @@ from django.shortcuts import render
 
 # Главная страница
 def index(request):
-    # template = loader.get_template('posts/index.html')
-    return render(request, 'posts/index.html')
+    template = 'posts/index.html'
+    title = 'Главная страница'
+    text = 'Последние обновления на сайте'
+    context = {
+        'title': title,
+        'text': text,
+    }
+    return render(request, template, context)
 
 # Страница сообщества
 def group_list(request):
-    # template = 'posts/group_list.html'
-    return render(request, 'posts/group_list.html')
+    template = 'posts/group_list.html'
+    return render(request, template)
