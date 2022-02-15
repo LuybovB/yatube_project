@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('community_page', views.group_list),
+    path('posts', views.group_list),
 ]
