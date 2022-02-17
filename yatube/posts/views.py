@@ -3,8 +3,9 @@ from sre_parse import expand_template
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
-from .models import Post
+from .models import Post, Group
 
 # Главная страница
 def index(request):
@@ -21,8 +22,10 @@ def index(request):
 
 def group_posts(request):
     template = 'posts/group_posts.html'
-    posts = 'Здесь будет информация о группах проекта Yatube'
+    group = get_object_or_404(Group, slug=slug)
+    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
     context = {
+        'group': group,
         'posts': posts,
     }    
     return render(request, template, context)
