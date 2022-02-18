@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ title }}
-{% endblock %}
-  
-{% block text %}
-<h1>Лев Толстой – зеркало русской революции.</h1>
+Страница сообщества
 {% endblock %}
 
-{% block paragraph_1 %}
-{% endblock %}
-
-{% block paragraph_2 %}
-{% endblock %}
-
-{% block paragraph_3 %}
-{% endblock %}
+{% block content %}
+  <h1>Лев Толстой – зеркало русской революции.</h1>
+  <p>Группа тайных поклонников графа.</p> 
+  {% for post in posts %}
+    <ul>
+      <li>Автор: {{ post.author.get_full_name }}</li>
+      <li>Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
+    </ul>      
+    <p>{{ post.text }}</p>
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
+{% endblock content %} 

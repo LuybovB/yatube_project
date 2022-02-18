@@ -1,22 +1,21 @@
-
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block title %}
 {{ title }}
 {% endblock %}
-
+{% block content %}
 {% block text %}
-{{ text }}
-{% endblock %}
-
-{% block paragraph_1 %}  
-<a href="{% url 'posts:group_list' %}">все записи группы</a>
-{% endblock %}
-
-{% block paragraph_2 %}
-<a href="{% url 'posts:group_list' %}">все записи группы</a>
-{% endblock %}
-
-{% block paragraph_3 %}
-<a href="{% url 'posts:group_list' %}">все записи группы</a>
-{% endblock %}
+<h1>Последние обновления на сайте</h1>
+{% endblock text %}  
+    {% for post in posts %}
+      <ul>
+        <li>Автор: {{ post.author.get_full_name }}</li>
+        <li>Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
+      </ul>      
+      <p>{{ post.text }}</p>    
+      {% if post.group %}
+        <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+      {% endif %}
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %} 
+{% endblock content %} 
