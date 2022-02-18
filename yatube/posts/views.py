@@ -23,15 +23,20 @@ def group_posts(request, slug):
     context = {
         'group': group,
         'posts': posts,
-    }    
+    }
     return render(request, template, context)
 
 def group_list(request, slug):
     template = 'posts/group_list.html'
     group = get_object_or_404(Group, slug=slug)
     posts = Post.objects.filter(group=group).order_by('-pub_date')[:3]
+    title = 'Страница сообщества'
+    text = 'Лев Толстой – зеркало русской революции.'
+
     context = {
         'group': group,
         'posts': posts,
+        'title': title,
+        'text': text,
     }    
     return render(request, template, context)
