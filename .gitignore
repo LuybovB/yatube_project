@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+yatube/static
 build/
 develop-eggs/
 dist/
@@ -128,4 +129,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .vscode
-.static
